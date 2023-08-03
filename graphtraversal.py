@@ -91,7 +91,7 @@ class Solution:
 
             max = 0
             for connection in connections:
-                value = self.spath_algo(graph, connection) + connection
+                value = self.spath_algo(graph, connection) + graph.value(start_node, connection)
                 if value > max:
                     max = value
                     
