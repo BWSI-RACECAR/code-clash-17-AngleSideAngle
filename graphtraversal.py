@@ -93,18 +93,19 @@ class Solution:
             for connection in connections:
                 if connection not in explored_nodes:
                     i += 1
-            if i == 0: # base case
+            if i == 0 or start_node == "Finish": # base case
                 return 0
 
             max = 0
+            travel_to = None
             for connection in connections:
                 if connection in explored_nodes:
                     continue
-                value = self.spath_algo(graph, connection, explored_nodes + [start_node, ], depth+1)[1] + graph.value(start_node, connection)
+                value = self.spath_algo(graph, connection, explored_nodes + [start_node, ], depth+1) + graph.value(start_node, connection)
                 if value > max:
                     max = value
                     
-            return (0, max)
+            return max
 
 def main():
     tc1 = Solution()
@@ -120,8 +121,10 @@ def main():
             in_graph[nodes[i]][edges[j]] = int(weights[j])
 
     graph = Graph(nodes, in_graph)
-    _, shortest_path = tc1.spath_algo(graph, "Start")
-    print(shortest_path["Finish"])
+    # _, shortest_path = tc1.spath_algo(graph, "Start")
+    # print(shortest_path["Finish"])
+    val = tc1.spath_algo(graph, "Start")
+    print(val)
 
 if __name__ == "__main__":
     main()
