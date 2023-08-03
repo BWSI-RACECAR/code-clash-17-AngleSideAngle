@@ -100,7 +100,7 @@ class Solution:
             for connection in connections:
                 if connection in explored_nodes:
                     continue
-                value = self.spath_algo(graph, connection, explored_nodes + start_node, depth+1) + graph.value(start_node, connection)
+                value = self.spath_algo(graph, connection, explored_nodes + [start_node], depth+1) + graph.value(start_node, connection)
                 if value > max:
                     max = value
                     
