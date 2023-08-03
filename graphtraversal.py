@@ -86,7 +86,7 @@ class Solution:
             
             #TODO: Write code below to return an int with the solution to the prompt.
             connections = graph.get_outgoing_edges(start_node)
-            if depth > 99:
+            if depth > 20:
                 return 9999999999
             if len(connections) == 0: # base case
                 return 0
