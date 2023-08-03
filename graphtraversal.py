@@ -104,7 +104,7 @@ class Solution:
                 if value > max:
                     max = value
                     
-            return max
+            return (0, max)
 
 def main():
     tc1 = Solution()
