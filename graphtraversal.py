@@ -79,7 +79,7 @@ class Graph(object):
 
 class Solution:
     
-    def spath_algo(self, graph, start_node):
+    def spath_algo(self, graph, start_node, depth = 0):
             #type graph: String Dictionary
             #type start_node: 
             #return type: int
@@ -87,12 +87,14 @@ class Solution:
             #TODO: Write code below to return an int with the solution to the prompt.
             connections = graph.get_outgoing_edges(start_node)
             print(connections)
+            if depth > 99:
+                return 9999999999
             if len(connections) == 0: # base case
                 return 0
 
             max = 0
             for connection in connections:
-                value = self.spath_algo(graph, connection) + graph.value(start_node, connection)
+                value = self.spath_algo(graph, connection, depth+1) + graph.value(start_node, connection)
                 if value > max:
                     max = value
                     
