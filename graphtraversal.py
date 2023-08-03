@@ -96,14 +96,14 @@ class Solution:
             if i == 0 or start_node == "Finish": # base case
                 return 0
 
-            max = 0
+            min = 0
             travel_to = None
             for connection in connections:
                 if connection in explored_nodes:
                     continue
                 value = self.spath_algo(graph, connection, explored_nodes + [start_node, ], depth+1) + graph.value(start_node, connection)
-                if value > max:
-                    max = value
+                if value < min:
+                    min = value
                     
             return max
 
